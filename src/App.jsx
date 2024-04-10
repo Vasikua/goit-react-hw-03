@@ -25,9 +25,9 @@ export default function App() {
       return prevUsers.filter((user) => user.id !== userId)
     });
   };
-  const visibleContact = user.filter((users) => {
+  const visibleContact = user.filter((users) => 
     users.name.toLowerCase().includes(search.toLowerCase())
-  })
+  )
 
   return (
     <div>
