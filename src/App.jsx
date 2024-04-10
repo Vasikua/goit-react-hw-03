@@ -14,21 +14,28 @@ export default function App() {
       { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
     ]
   );
+  const [search, setSearch] = useState(''); 
 
-  const handleAddUser = (newUser) => {
+  const addUser = (newUser) => {
     console.log("data from FORM", newUser)
   };
 
+  const deleteUser = (userId) => {
+    setUser((prevUsers) => {
+      return prevUsers.filter((user) => user.id !== userId)
+    });
+  };
+  const visibleContact = user.filter((users) => {
+    users.name.toLowerCase().includes(search.toLowerCase())
+  })
+
   return (
-    <>
-      <div>
-        <h1>Phonebook</h1>
-        {/* if send function onXXXXX */}
-  <ContactForm onAdd={handleAddUser} />
-  <SearchBox />
-  <ContactList data = {user} />
-</div>
-    </>
+    <div>
+      <h1>Phonebook</h1>
+      <ContactForm onAdd={addUser} />
+      <SearchBox value={ search } onSearch={setSearch} />
+      <ContactList data = {visibleContact} onDelete={deleteUser} />
+    </div>
   )
 }
 

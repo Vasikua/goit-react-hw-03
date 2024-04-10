@@ -1,16 +1,13 @@
-import { useState } from 'react';
 import css from './SearchBox.module.css'
-export default function SearchBox() {
-
-    const [inputValue, setInputValue] = useState('');
-
+export default function SearchBox({value, onSearch}) {
     return (
         <div className='css.container'>
-            <label htmlFor="search"> Find contacts by name</label>
-            <input type="text" value={inputValue} onChange={(event) => {
-                setInputValue(event.target.value)
-            }} />
-    
+            <p className = {css.label}> Find contacts by name </p>
+            <input
+                type="text"
+                value={value}
+                onChange={(e) => onSearch(e.target.value)}
+            />
         </div>
-            );
+    );
 }
