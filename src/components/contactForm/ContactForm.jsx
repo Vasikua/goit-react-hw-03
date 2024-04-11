@@ -1,4 +1,6 @@
 import { useId } from 'react';
+import { ErrorMessage,Form, Formik } from "formik";
+import * as Yup from "yup";
 import css from './ContactForm.module.css';
 export default function ContactForm({onAdd}) {
    
@@ -7,7 +9,8 @@ export default function ContactForm({onAdd}) {
         const form = event.target;
         onAdd ({
             name: form.elements.username.value,
-            number: form.elements.number.value 
+            number: form.elements.number.value, 
+            id: Date.now(),
         })
         form.reset();
     }
@@ -20,11 +23,11 @@ export default function ContactForm({onAdd}) {
         <form className="css.form" onSubmit={handleSubmit}>
             <div className="css.group">
                 <label htmlFor={usernameId}>Name</label>
-                <input type="text" name="username" id = {usernameId} />
+                <input type="text" name="username" id = {usernameId}/>
                 <label htmlFor={numberId} >number</label>
-                <input type="number" name="number" id={numberId } />
+                <input type="number" name="number" id={numberId}/>
             </div>
-            <button type='submit'>Add contact</button>
+            <button className={css.submit} type='submit'>Add contact</button>
         </form>
     );
 } 

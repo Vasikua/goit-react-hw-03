@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { Formik } from 'formik';
 import ContactForm from './components/contactForm/ContactForm';
 import ContactList from './components/contactList/ContactList';
 import SearchBox from './components/searchBox/SearchBox';
@@ -14,10 +13,12 @@ export default function App() {
       { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
     ]
   );
-  const [search, setSearch] = useState(''); 
+ const [search, setSearch] = useState(''); 
 
   const addUser = (newUser) => {
-    console.log("data from FORM", newUser)
+    setUser((user) => {
+      return [...user, newUser];
+    })
   };
 
   const deleteUser = (userId) => {
@@ -29,6 +30,7 @@ export default function App() {
     users.name.toLowerCase().includes(search.toLowerCase())
   )
 
+   
   return (
     <div>
       <h1>Phonebook</h1>
