@@ -3,7 +3,8 @@ export default function SearchBox({value, onSearch}) {
     return (
         <div className='css.container'>
             <p className = {css.label}> Find contacts by name </p>
-            <input
+            <input 
+                className={css.input} 
                 type="text"
                 value={value}
                 onChange={(e) => onSearch(e.target.value)}
